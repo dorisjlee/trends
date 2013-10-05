@@ -284,6 +284,19 @@ def group_tweets_by_state(tweets):
     """
     tweets_by_state = {}
     "*** YOUR CODE HERE ***"
+    state_centers = {}
+    for x in us_states:
+        state_centers[x] = find_state_center(us_states[x])
+    for tweet in tweets:
+        a = []
+        for state in state_centers:
+            a.append((geo_distance(tweet_location(tweet), state_centers[state]), state))
+        near_state = min(a)
+        if near_state[1] in tweets_by_state:
+            tweets_by_state[near_state[1]].append(tweet)
+        else:
+            tweets_by_state[near_state[1]] = [tweet]
+    return tweets_by_state
     return tweets_by_state
 
 def average_sentiments(tweets_by_state):
