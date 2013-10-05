@@ -65,7 +65,7 @@ def make_tweet_fn(text, time, lat, lon):
     """
     "*** YOUR CODE HERE ***"
     # Please don't call make_tweet in your solution
-    t = {'text': text, 'time': time, 'lat': lat, 'lon': lon}
+    t = {'text': text,'time': time,'lat': lat,'lon': lon}
     def tweet(key):
         return t[key]
     return tweet
@@ -135,15 +135,22 @@ def make_sentiment(value):
     """
     assert value is None or (value >= -1 and value <= 1), 'Illegal value'
     "*** YOUR CODE HERE ***"
+    sentiment_list=[value]
+    return sentiment_list
 
 def has_sentiment(s):
     """Return whether sentiment s has a value."""
     "*** YOUR CODE HERE ***"
+    if s[0]!= None or (s[0] >= -1 and s[0] <= 1):
+        return True
+    else:
+        return False 
 
 def sentiment_value(s):
     """Return the value of a sentiment s."""
     assert has_sentiment(s), 'No sentiment value'
     "*** YOUR CODE HERE ***"
+    return s[0]
 
 def get_word_sentiment(word):
     """Return a sentiment representing the degree of positive or negative
