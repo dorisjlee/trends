@@ -190,6 +190,8 @@ def analyze_tweet_sentiment(tweet):
     average = make_sentiment(None)
     "*** YOUR CODE HERE ***"
     return average
+    if _____ ==None:
+        return make_sentiment(None)
 
 
 #################################
