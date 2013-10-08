@@ -189,10 +189,36 @@ def analyze_tweet_sentiment(tweet):
     # You may change any of the lines below.
     average = make_sentiment(None)
     "*** YOUR CODE HERE ***"
+    #Steps
+    def split_phrase(x):
+        #x="LA ma name is bob"
+        word=""
+        word_list=[]
+        for ele in x:
+            word=word +ele
+            if ele==" ":
+                word_list.append(word)
+                word=""
+            if ele==x[len(tweet)-1]:
+                word_list.append(word)
+        word_list.remove(tweet[len(tweet)-1])
+        return word_list
+    twitter_list=split_phrase(twitter)
+    sum=0
+    for x in twitter_list:
+        if x=="None":
+            return make_sentiment(None)
+        else:
+            sum=sum+get_word_sentiment(x)
+    average=sum/len(twitter_list)
     return average
-    if _____ ==None:
-        return make_sentiment(None)
+    #1)split words up
+    #2)for each word 
+    #3)if all are none then return make_sentiment(None)
+    #4)if normal then sum together all the get_word_sentiment divide by number of words to get average
+    #5)return average
 
+    
 
 #################################
 # Phase 2: The Geometry of Maps #

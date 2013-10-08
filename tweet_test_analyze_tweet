@@ -1,0 +1,66 @@
+tweet="LA ma name is bob"
+word=""
+word_list=[]
+for ele in tweet:
+	word=word +ele
+	if ele==" ":
+		word_list.append(word)
+		word=""
+	if ele==tweet[len(tweet)-1]:
+		word_list.append(word)
+
+word_list.remove(tweet[len(tweet)-1])
+
+
+
+
+def analyze_tweet_sentiment(tweet):
+    """ Return a sentiment representing the degree of positive or negative
+    sentiment in the given tweet, averaging over all the words in the tweet
+    that have a sentiment value.
+
+    If no words in the tweet have a sentiment value, return
+    make_sentiment(None).
+
+    >>> positive = make_tweet('i love my job. #winning', None, 0, 0)
+    >>> round(sentiment_value(analyze_tweet_sentiment(positive)), 5)
+    0.29167
+    >>> negative = make_tweet("saying, 'i hate my job'", None, 0, 0)
+    >>> sentiment_value(analyze_tweet_sentiment(negative))
+    -0.25
+    >>> no_sentiment = make_tweet("berkeley golden bears!", None, 0, 0)
+    >>> has_sentiment(analyze_tweet_sentiment(no_sentiment))
+    False
+    """
+    # You may change any of the lines below.
+    average = make_sentiment(None)
+    "*** YOUR CODE HERE ***"
+    #Steps
+    def split_phrase(x):
+        #x="LA ma name is bob"
+        word=""
+        word_list=[]
+        for ele in x:
+            word=word +ele
+            if ele==" ":
+                word_list.append(word)
+                word=""
+            if ele==x[len(tweet)-1]:
+                word_list.append(word)
+        word_list.remove(tweet[len(tweet)-1])
+        return word_list
+    twitter_list=split_phrase(twitter)
+    sum=0
+    for x in twitter_list:
+        if x=="None":
+            return make_sentiment(None)
+        else:
+            sum=sum+get_word_sentiment(x)
+    average=sum/len(twitter_list)
+    return average
+    #1)split words up
+    #2)for each word 
+    #3)if all are none then return make_sentiment(None)
+    #4)if normal then sum together all the get_word_sentiment divide by number of words to get average
+    #5)return average
+
